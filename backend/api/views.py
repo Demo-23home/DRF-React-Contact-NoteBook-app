@@ -7,6 +7,10 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from .models import Contact
+from .serializers import ContactSerializer
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -49,6 +53,22 @@ def getRoutes(request):
         '/api/token/refresh/'
     ]
     return Response(routes)
+
+
+
+
+
+
+class ContactListCreateView(generics.ListCreateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+    permission_classes = [IsAuthenticated]
+
+class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+    permission_classes = [IsAuthenticated]
+
 
 
 

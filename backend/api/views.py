@@ -60,9 +60,21 @@ def getRoutes(request):
 
 
 class ContactListCreateView(generics.ListCreateAPIView):
-    queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = Contact.objects.all()
+
+        # Implement search functionality
+        search_param = self.request.query_params.get('search', None)
+        if search_param:
+            queryset = queryset.filter(contact_name__icontains=search_param)
+
+        return queryset
+
+
+
 
 class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Contact.objects.all()

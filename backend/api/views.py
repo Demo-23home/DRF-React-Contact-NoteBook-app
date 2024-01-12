@@ -72,6 +72,14 @@ class ContactListCreateView(generics.ListCreateAPIView):
             queryset = queryset.filter(contact_name__icontains=search_param)
 
         return queryset
+    
+    def perform_create(self, serializer):
+        # Automatically set the created_by field based on the current user
+        serializer.save(created_by=self.request.user, updated_by=self.request.user)
+
+    def perform_update(self, serializer):
+        # Automatically set the updated_by field based on the current user
+        serializer.save(updated_by=self.request.user)
 
 
 

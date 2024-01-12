@@ -18,19 +18,13 @@ const ContactsPage = () => {
           <li>
             <Link to="/contacts/create">Create</Link>
           </li>
-          <li>
-            <Link to="/contacts/update">Update</Link>
-          </li>
-          <li>
-            <Link to="/contacts/detail">Detail</Link>
-          </li>
         </ul>
       </nav>
       <Switch>
         <Route path="/contacts/list" component={ContactList} />
         <Route path="/contacts/create" component={ContactCreate} />
-        <Route path="/contacts/update" component={ContactUpdate} />
-        <Route path="/contacts/detail" component={ContactDetail} />
+        <Route path="/contacts/:contactId/update" component={ContactUpdate} />
+        <Route path="/contacts/:contactId" component={ContactDetail} />
       </Switch>
     </div>
   );

@@ -1,10 +1,10 @@
 // ContactsPage.js
-import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import ContactCreate from './ContactCreate'
-import ContactList from './ContactList'
-import ContactUpdate from './ContactUpdate'
-import ContactDetail from './ContactDetail'
+import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import ContactCreate from "./ContactCreate";
+import ContactList from "./ContactList";
+import ContactUpdate from "./ContactUpdate";
+import ContactDetail from "./ContactDetail";
 
 const ContactsPage = () => {
   return (

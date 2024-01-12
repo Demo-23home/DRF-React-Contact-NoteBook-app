@@ -1,3 +1,4 @@
+// ContactService.js
 import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:8000/api';
@@ -18,9 +19,9 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 const ContactService = {
-  getContacts: async () => {
+  getContacts: async (params) => {
     try {
-      const response = await axiosInstance.get('/contacts/');
+      const response = await axiosInstance.get('/contacts/', { params });
       return response.data;
     } catch (error) {
       throw error;

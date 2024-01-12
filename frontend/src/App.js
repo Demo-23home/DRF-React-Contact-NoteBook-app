@@ -9,7 +9,7 @@ import HomePage from './views/HomePage'
 // import DashBoard from './views/DashBoard'
 import NavBar from './views/NavBar'
 import ContactsPage from './components/ContactsPage';
-
+// import ContactDetail from './components/ContactUpdate'
 
 
 

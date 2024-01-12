@@ -1,5 +1,5 @@
-// ContactList.js
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ContactService from "../services/ContactService";
 
 const ContactList = () => {
@@ -23,7 +23,9 @@ const ContactList = () => {
       <h2>Contact List</h2>
       <ul>
         {contacts.map((contact) => (
-          <li key={contact.id}>{contact.contact_name}</li>
+          <li key={contact.id}>
+            <Link to={`/contacts/${contact.id}`}>{contact.contact_name}</Link>
+          </li>
         ))}
       </ul>
     </div>

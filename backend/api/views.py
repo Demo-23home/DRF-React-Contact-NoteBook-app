@@ -93,4 +93,3 @@ class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
-

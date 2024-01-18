@@ -20,10 +20,6 @@ const NavBar = () => {
   return (
     <div>    <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
     <div className="container-fluid">
-      <a className="navbar-brand" href="#">
-        <img style={{width:'120px', padding:"6px"}} src="https://i.imgur.com/juL1aAc.png" alt=""/>
-
-      </a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

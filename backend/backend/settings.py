@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -145,13 +146,17 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 AUTH_USER_MODEL = "api.User"
 
-
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ),
 }
 
+# Add the 'SIMPLE_JWT' configuration separately
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    # ... other JWT settings ...
+}
 STATIC_URL = "/static/"
 STATIC_ROOT = "/app/static/"
 

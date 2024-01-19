@@ -60,6 +60,9 @@ function RegisterPage() {
                         name="password2"
                       />
                     </div>
+                    <small className="text-muted">
+                        Password must contain one number, one capital letter, one small letter, one special character, and be at least 8 characters long. E.g., Test@123
+                      </small>
                     <div>
                       <button
                         className="btn btn-dark btn-block"

@@ -51,3 +51,13 @@ class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ContactSerializer
     permission_classes = [IsAuthenticated]
 
+    def update(self, request, *args, **kwargs):
+        # Fetch the existing contact instance
+        instance = self.get_object()
+
+        # Set the updated_by field to the current user
+        instance.updated_by = request.user
+        instance.save()
+
+        # Perform the update using the serializer
+        return super().update(request, *args, **kwargs)

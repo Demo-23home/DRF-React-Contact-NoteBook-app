@@ -37,7 +37,7 @@ This project has been Dockerized for easy deployment. To run the project using D
 docker-compose build
 
 ```
-2- Access the application at http://127.0.0.1:80 for the Django backend and http://127.0.0.1:3000 for the React frontend.
+2- Access the application at http://127.0.0.1:80 for the Django backend and http://127.0.0.1:8000/(api || contacts ) for the React frontend.
 3- Access Swagger for API documentation at http://127.0.0.1:8000.
 ## Authentication
 

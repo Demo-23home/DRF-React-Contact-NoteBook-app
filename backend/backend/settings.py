@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
  #Internal Apps
     'api',
+    'contacts',
     #External Modules
     'corsheaders',
     'rest_framework',

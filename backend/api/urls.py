@@ -12,6 +12,5 @@ urlpatterns = [
     path("register/",RegisterView.as_view()),
     path("dashboard/",dahsBoard),
     path('',getRoutes),
-    path('contacts/', ContactListCreateView.as_view(), name='contact-list-create'),
-    path('contacts/<int:pk>/', ContactDetailView.as_view(), name='contact-detail'),
+
 ]

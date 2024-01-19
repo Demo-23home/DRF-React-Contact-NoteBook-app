@@ -3,7 +3,6 @@ from .models import User, Profile
 from django.contrib.auth.password_validation import validate_password
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
-from .models import Contact
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -55,10 +54,3 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class ContactSerializer(serializers.ModelSerializer):
-    created_by = serializers.ReadOnlyField(source="created_by.username")
-    updated_by = serializers.ReadOnlyField(source="updated_by.username")
-
-    class Meta:
-        model = Contact
-        fields = "__all__"

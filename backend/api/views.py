@@ -39,10 +39,7 @@ def dahsBoard(request):
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
     
 
-
-#Get all Routes
 # Get All Routes
-
 @api_view(['GET'])
 def getRoutes(request):
     routes = [

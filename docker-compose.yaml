@@ -10,6 +10,8 @@ services:
       context: ./backend
     ports:
       - "8000:8000"
+    depends_on:
+      - redis
   frontend:
     build:
       context: ./frontend
@@ -26,6 +28,10 @@ services:
     depends_on:
       - backend
       - frontend
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6380:6379"
 
 volumes:
   static:

@@ -18,13 +18,13 @@ function RegisterPage() {
   return (
     <div>
       <section>
-        <div>
-          <div>
-            <div>
-              <div>
-                <div>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card">
+                <div className="card-body">
                   <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className="mb-3">
                       <input
                         type="email"
                         className="form-control"
@@ -33,7 +33,7 @@ function RegisterPage() {
                         name="email"
                       />
                     </div>
-                    <div>
+                    <div className="mb-3">
                       <input
                         type="text"
                         className="form-control"
@@ -42,7 +42,7 @@ function RegisterPage() {
                         name="username"
                       />
                     </div>
-                    <div>
+                    <div className="mb-3">
                       <input
                         type="password"
                         className="form-control"
@@ -51,7 +51,7 @@ function RegisterPage() {
                         name="password"
                       />
                     </div>
-                    <div>
+                    <div className="mb-3">
                       <input
                         type="password"
                         className="form-control"

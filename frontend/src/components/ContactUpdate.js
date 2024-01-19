@@ -1,4 +1,3 @@
-// ContactUpdate.js
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import ContactService from '../services/ContactService';
@@ -11,7 +10,6 @@ const ContactUpdate = () => {
     contact_name: '',
     email: '',
     phone: '',
-    // Add other fields as needed
   });
 
   useEffect(() => {
@@ -40,7 +38,6 @@ const ContactUpdate = () => {
     try {
       await ContactService.updateContact(contactId, contact);
       console.log('Contact updated successfully');
-      // Optionally, you can redirect to the contact list or perform other actions.
       history.push(`/contacts/${contactId}`);
     } catch (error) {
       console.error('Error updating contact:', error);
@@ -48,38 +45,49 @@ const ContactUpdate = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Update Contact</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Contact Name:
+        <div className="mb-3">
+          <label htmlFor="contactName" className="form-label">
+            Contact Name:
+          </label>
           <input
             type="text"
+            className="form-control"
+            id="contactName"
             name="contact_name"
             value={contact.contact_name}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Email:
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email:
+          </label>
           <input
             type="email"
+            className="form-control"
+            id="email"
             name="email"
             value={contact.email}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Phone:
+        </div>
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">
+            Phone:
+          </label>
           <input
             type="text"
+            className="form-control"
+            id="phone"
             name="phone"
             value={contact.phone}
             onChange={handleChange}
           />
-        </label>
-        {/* Add other fields as needed */}
-        <button type="submit">Update Contact</button>
+        </div>
+        <button type="submit" className="btn btn-primary">Update Contact</button>
       </form>
     </div>
   );

@@ -13,19 +13,16 @@ const ContactCreate = () => {
     try {
       setSubmitting(true);
 
-      // Creating the contact
       await ContactService.createContact({
         contact_name: contactName,
         email: email,
         phone: phone,
       });
 
-      // Resetting the form
       setContactName('');
       setEmail('');
       setPhone('');
 
-      // Optionally, you can redirect to the contact list or show a success message to the user
       console.log('Contact created successfully');
     } catch (error) {
       console.error('Error creating contact:', error);
@@ -35,34 +32,46 @@ const ContactCreate = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Create Contact</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Contact Name:
+        <div className="mb-3">
+          <label htmlFor="contactName" className="form-label">
+            Contact Name:
+          </label>
           <input
             type="text"
+            className="form-control"
+            id="contactName"
             value={contactName}
             onChange={(e) => setContactName(e.target.value)}
           />
-        </label>
-        <label>
-          Email:
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email:
+          </label>
           <input
             type="email"
+            className="form-control"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </label>
-        <label>
-          Phone:
+        </div>
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">
+            Phone:
+          </label>
           <input
             type="text"
+            className="form-control"
+            id="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
-        </label>
-        <button type="submit" disabled={isSubmitting}>
+        </div>
+        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
           {isSubmitting ? 'Creating...' : 'Create Contact'}
         </button>
       </form>

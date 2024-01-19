@@ -1,5 +1,3 @@
-// ContactList.js
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ContactService from "../services/ContactService";
@@ -26,17 +24,18 @@ const ContactList = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Contact List</h2>
       <input
         type="text"
+        className="form-control"
         placeholder="Search contacts"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
       />
-      <ul>
+      <ul className="list-group mt-3">
         {contacts.map((contact) => (
-          <li key={contact.id}>
+          <li key={contact.id} className="list-group-item">
             <Link to={`/contacts/${contact.id}`}>{contact.contact_name}</Link>
           </li>
         ))}

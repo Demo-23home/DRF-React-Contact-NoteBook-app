@@ -10,6 +10,8 @@ This is a Django Rest Framework (DRF) and React project with an authentication s
 - [Authentication](#authentication)
 - [CRUD Operations](#crud-operations)
 - [Search Functionality](#search-functionality)
+- [Redis Caching System](#redis-caching-system)
+  
 
 ## Project Overview
 
@@ -23,13 +25,20 @@ Include instructions on how to set up the project locally. This may include clon
 ```bash
 git clone https://github.com/Demo-23home/DRF-React-ContactTask.git
 cd DRF-React-ContactTask
-# Install backend dependencies
-pip install -r requirements.txt
-# Install frontend dependencies
-cd frontend
-npm install
+```
+# Usage
+
+## Docker
+This project has been Dockerized for easy deployment. To run the project using Docker, follow these steps:
+
+1- Build the Docker images:
+
+```bash
+docker-compose build
 
 ```
+2- Access the application at http://127.0.0.1:80 for the Django backend and http://127.0.0.1:3000 for the React frontend.
+3- Access Swagger for API documentation at http://127.0.0.1:8000.
 ## Authentication
 
 The authentication system in this project is implemented using JSON Web Tokens (JWT). JWTs are used to securely transmit information between parties as a JSON object. In the context of this project, the JWT tokens are employed to authenticate and authorize users. Here's a brief overview of how the authentication works:
@@ -45,30 +54,30 @@ This mechanism provides a stateless and secure way to handle user authentication
 ## CRUD Operations
 
 ### Create
-- **Endpoint:** `POST /api/contacts/`
+- **Endpoint:** `POST /contacts/`
 - **Description:** Create a new contact by sending a POST request to the specified endpoint with the required data.
 
 ### Read
 - **List Contacts:**
-  - **Endpoint:** `GET /api/contacts/`
+  - **Endpoint:** `GET /contacts/`
   - **Description:** Retrieve a list of all contacts.
 
 - **Get Contact by ID:**
-  - **Endpoint:** `GET /api/contacts/{id}/`
+  - **Endpoint:** `GET /contacts/{id}/`
   - **Description:** Retrieve details of a specific contact by providing its ID.
 
 ### Update
 - **Update Contact by ID:**
-  - **Endpoint:** `PUT /api/contacts/{id}/`
+  - **Endpoint:** `PUT /contacts/{id}/`
   - **Description:** Update a contact by sending a PUT request to the specified endpoint with the updated data.
 
 - **Partial Update Contact by ID:**
-  - **Endpoint:** `PATCH /api/contacts/{id}/`
+  - **Endpoint:** `PATCH /contacts/{id}/`
   - **Description:** Perform a partial update on a contact by sending a PATCH request with the modified fields.
 
 ### Delete
 - **Delete Contact by ID:**
-  - **Endpoint:** `DELETE /api/contacts/{id}/`
+  - **Endpoint:** `DELETE /contacts/{id}/`
   - **Description:** Delete a contact by providing its ID in a DELETE request.
 
 ## Search Functionality
@@ -88,3 +97,6 @@ The frontend implements search functionality to allow users to find specific con
 4. The server processes the request and returns the relevant search results.
 5. The frontend displays the search results to the user.
 ```
+
+### Redis Caching System
+Redis has been integrated into this project as a caching system to enhance performance. The system caches data for 30 seconds, allowing frequently requested data to be stored in memory and reducing the need to retrieve it from the database repeatedly.

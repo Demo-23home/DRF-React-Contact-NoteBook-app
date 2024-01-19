@@ -8,8 +8,8 @@ import ContactDetail from "./ContactDetail";
 const ContactsPage = () => {
   const style = {
     background: "#f0f0f0",
-    borderRadius: "10px", // Adjust the value as needed
-    padding: "20px", // Add padding for better visibility
+    borderRadius: "10px",
+    padding: "20px", 
   };
   return (
     <div className="container mt-5" style={style}>

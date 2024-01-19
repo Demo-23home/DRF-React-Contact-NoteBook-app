@@ -4,10 +4,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 import redis
 from django.conf import settings
-import pickle 
+import pickle
 
 
-redis_conn = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
+redis_conn = redis.StrictRedis(
+    host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB
+)
+
 
 class ContactListCreateView(generics.ListCreateAPIView):
     serializer_class = ContactSerializer
@@ -18,32 +21,22 @@ class ContactListCreateView(generics.ListCreateAPIView):
         cached_data = redis_conn.get(redis_key)
 
         if cached_data:
-            # Use cached data if available
-            return pickle.loads(cached_data)
+            return pickle.loads(cached_data)  # Use cached data if available
         else:
-            # Execute the original queryset
-            queryset = Contact.objects.all()
+            queryset = Contact.objects.all()  # Execute the original queryset
+            search_param = self.request.query_params.get("search", None)
 
-            # Implement search functionality
-            search_param = self.request.query_params.get('search', None)
             if search_param:
                 queryset = queryset.filter(contact_name__icontains=search_param)
 
-            # Cache the queryset results
-            redis_conn.set(redis_key, pickle.dumps(queryset), ex=30)
+            redis_conn.set(
+                redis_key, pickle.dumps(queryset), ex=30
+            )  # Cache the queryset results
 
             return queryset
 
-    
     def perform_create(self, serializer):
-        # Automatically set the created_by field based on the current user
         serializer.save(created_by=self.request.user, updated_by=self.request.user)
-
-    def perform_update(self, serializer):
-        # Automatically set the updated_by field based on the current user
-        serializer.save(updated_by=self.request.user)
-
-
 
 
 class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -52,12 +45,9 @@ class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def update(self, request, *args, **kwargs):
-        # Fetch the existing contact instance
         instance = self.get_object()
 
-        # Set the updated_by field to the current user
         instance.updated_by = request.user
         instance.save()
 
-        # Perform the update using the serializer
         return super().update(request, *args, **kwargs)

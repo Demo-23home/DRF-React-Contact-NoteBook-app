@@ -17,7 +17,7 @@ function RegisterPage() {
 
   return (
     <div>
-      <section>
+      <section style={{ marginTop: '50px' }}> {/* Adjust the value as needed */}
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6">

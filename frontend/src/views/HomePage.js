@@ -11,7 +11,7 @@ const HomePage = () => {
     padding: '20px',
     maxWidth: '800px',
     margin: 'auto',
-    marginTop: '50px', // Added marginTop
+    marginTop: '50px', 
     textAlign: 'center',
     backgroundColor: '#f0f0f0',
     borderRadius: '8px',
@@ -40,7 +40,10 @@ const HomePage = () => {
         The project is Dockerized for easy deployment. You can run it using Docker by following the provided instructions in the README.
         Additionally, Redis has been integrated as a caching system to enhance performance. The system caches data for 30 seconds, optimizing data retrieval.
       </p>
-      {/* Add more content or customize the layout as needed */}
+      <p style={textStyle}>
+        Explore the API documentation using Swagger at <a href="http://127.0.0.1:8000" target="_blank" rel="noopener noreferrer">127.0.0.1:8000</a>, 
+        and detailed Swagger Docs at <a href="http://127.0.0.1:8000/docs" target="_blank" rel="noopener noreferrer">127.0.0.1:8000/docs</a>.
+      </p>
     </div>
   );
 }

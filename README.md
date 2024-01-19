@@ -24,7 +24,7 @@ Include instructions on how to set up the project locally. This may include clon
 
 ```bash
 git clone https://github.com/Demo-23home/DRF-React-ContactTask.git
-cd DRF-React-ContactTask
+cd DRFReactContactTask
 ```
 # Usage
 
@@ -34,8 +34,7 @@ This project has been Dockerized for easy deployment. To run the project using D
 1- Build the Docker images:
 
 ```bash
-docker-compose build
-
+ docker-compose up --build
 ```
 2- Access the application at http://127.0.0.1:80 for the Django backend and http://127.0.0.1:8000/(api || contacts ) for the React frontend.
 3- Access Swagger for API documentation at http://127.0.0.1:8000.
